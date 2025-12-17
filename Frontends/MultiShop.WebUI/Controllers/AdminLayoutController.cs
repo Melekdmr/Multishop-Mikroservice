@@ -4,9 +4,9 @@ namespace MultiShop.WebUI.Controllers
 {
 	public class AdminLayoutController : Controller
 	{
-		public IActionResult Index()
+		public IActionResult Index ()
 		{
-			return View();
+			return View(); 
 		}
 	}
 }
