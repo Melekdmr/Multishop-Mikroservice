@@ -74,8 +74,8 @@ namespace Multishop.IdentityServer
 	{
 		ClientId="MultishopManagerId",
 		ClientName="Multishop Manager User",
-		AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
-		ClientSecrets={new Secret("multishopsecret".Sha256()) },
+		AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,//Client kullanıcı şifresini bilir ❗Artık deprecated / önerilmez
+        ClientSecrets={new Secret("multishopsecret".Sha256()) },
 		AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
 	},
 
