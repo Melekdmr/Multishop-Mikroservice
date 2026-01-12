@@ -1,0 +1,45 @@
+﻿@model CreateCategoryDto
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <!-- Başlık -->
+                <h4 class="mb-2">Kategori Ekle</h4>
+                <p class="text-muted mb-4">
+                    Yeni bir kategori eklemek için aşağıdaki formu doldurabilirsiniz.
+                </p>
+
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+
+                        <!-- Form Group -->
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-bold">Kategori Adı</label>
+                            <input type="text"
+                                   class="form-control"
+                                 asp-for="CategoryName"
+                                   placeholder="Kategori adını giriniz" />
+                        </div>
+
+                        <!-- Buton -->
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary px-4">
+                                <i class="fas fa-plus me-1"></i> Kategoriyi Ekle
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
