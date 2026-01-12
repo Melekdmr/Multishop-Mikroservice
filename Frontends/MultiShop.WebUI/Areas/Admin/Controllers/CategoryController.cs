@@ -24,7 +24,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             ViewBag.v1 = "Anasayfa";
             ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Yeni Kategori Girişi";
+            ViewBag.v3 = "Kategori Listesi";
             ViewBag.v0 = "Kategori İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
