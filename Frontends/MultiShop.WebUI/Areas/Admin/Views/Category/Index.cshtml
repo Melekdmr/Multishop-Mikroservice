@@ -28,9 +28,10 @@
                         </thead>
                         <tbody>
                             @foreach(var item in Model){
+                                count++;
                             <tr>
                               @*   <th scope="row">1</th> *@
-                                <td>@item.CategoryID</td>
+                                <td>@count</td>
                                 <td>@item.CategoryName</td>
                                 <td><a href="#" class="btn btn-warning">Kategoriye Ait Ürünler</a></td>
                                     <td><a href="/Admin/Category/DeleteCategory/@item.CategoryID" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Sil</a></td>
