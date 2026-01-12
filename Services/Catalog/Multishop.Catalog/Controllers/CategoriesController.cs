@@ -23,7 +23,7 @@ namespace Multishop.Catalog.Controllers
 			var values = await _categoryService.GetAllCategoryAsync();
 			return Ok(values);
 		}
-		[HttpGet("id")]
+		[HttpGet("{id}")]
 		public async Task<IActionResult> GetCategoryById(string id)
 		{
 			var values = await _categoryService.GetByIdCategoryAsync(id);
@@ -35,7 +35,7 @@ namespace Multishop.Catalog.Controllers
 			await _categoryService.CreateCategoryAsync(createCategoryDto);
 			return Ok("Kategori başarıyla eklendi");
 		}
-		[HttpDelete("id")]
+		[HttpDelete("{id}")]
 
 		public async Task<IActionResult> DeleteCategory(string id)
 		{
