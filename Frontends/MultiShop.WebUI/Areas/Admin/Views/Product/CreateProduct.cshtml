@@ -1,0 +1,71 @@
+﻿@model CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <!-- Başlık -->
+                <h4 class="mb-2">Ürün Ekle</h4>
+                <p class="text-muted mb-4">
+                    Yeni bir kategori eklemek için aşağıdaki formu doldurabilirsiniz.
+                </p>
+
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+
+                        <!-- Form Group -->
+                        <div class="form-group mb-3">
+                            <label class="form-label fw-bold">Ürün Adı</label>
+                            <input type="text"
+                                   class="form-control"
+                                   asp-for="ProductName"
+                                 />
+
+                                    <label class="form-label fw-bold">Ürün Fiyatı</label>
+                            <input type="text"
+                                   class="form-control"
+                                   asp-for="ProductPrice"
+                                  />
+
+                                    <label class="form-label fw-bold">Ürün Görseli</label>
+                            <input type="text"
+                                   class="form-control"
+                                   asp-for="ProductImageUrl"
+                                />
+
+                            <label class="form-label fw-bold">Ürün Kategorisi</label>
+                          @Html.DropDownListFor(X=>X.CategoryID,(List<SelectListItem>)ViewBag.CategoryValues,new {@class="form-control"})
+
+                            <label class="form-label fw-bold">Stok Durumu</label>
+                            <input type="text"
+                                   class="form-control"
+                                   asp-for="ProductStock"
+                                   />
+
+
+                            <label class="form-label fw-bold">Ürün Açıklaması</label>
+                           <textarea class="form-control" asp-for="ProductDescription" rows="5"></textarea>
+                        </div>
+
+                        <!-- Buton -->
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary px-4">
+                                <i class="fas fa-plus me-1"></i> Ürünü Ekle
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
