@@ -2,11 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Multishop.DtoLayer.CatalogDtos.CategoryDtos;
 using Newtonsoft.Json;
+using System.ComponentModel.Design.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [AllowAnonymous]  //sınıf seviyesinde olsun
+    [Route("Admin/Category")]
     public class CategoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -15,12 +19,12 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-      
+        [Route("Index")]
         public async  Task<IActionResult> Index()
         {
             ViewBag.v1 = "Anasayfa";
             ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Listesi";
+            ViewBag.v3 = "Yeni Kategori Girişi";
             ViewBag.v0 = "Kategori İşlemleri";
 
             var client = _httpClientFactory.CreateClient();
