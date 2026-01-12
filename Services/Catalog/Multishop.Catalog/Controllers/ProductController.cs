@@ -6,7 +6,7 @@ using Multishop.Catalog.Services.ProductServices;
 
 namespace Multishop.Catalog.Controllers
 {
-	[Authorize]
+	[AllowAnonymous]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class ProductController : ControllerBase
@@ -23,7 +23,7 @@ namespace Multishop.Catalog.Controllers
 			var values = await _productService.GetAllProductAsync();
 			return Ok(values);
 		}
-		[HttpGet("id")]
+		[HttpGet("{id}")]
 		public async Task<IActionResult> GetProductById(string id)
 		{
 			var values = await _productService.GetByIdProductAsync(id);
@@ -35,7 +35,7 @@ namespace Multishop.Catalog.Controllers
 			await _productService.CreateProductAsync(createProductDto);
 			return Ok("Ürün başarıyla eklendi");
 		}
-		[HttpDelete("id")]
+		[HttpDelete("{id}")]
 
 		public async Task<IActionResult> DeleteProduct(string id)
 		{
