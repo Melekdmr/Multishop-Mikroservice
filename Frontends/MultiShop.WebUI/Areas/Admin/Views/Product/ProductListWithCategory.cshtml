@@ -1,0 +1,52 @@
+﻿@model List<ResultProductWithCategoryDto>
+
+@{
+    ViewData["Title"] = "ProductListWithCategory";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ürün Adı</th>
+                                <th>Ürün Fiyatı</th>
+                                <th>Ürün Kategori</th>
+                                <th>Stok Durumu</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                                <th>Ürün Görselleri</th>
+                                <th>Açıklama ve Bilgi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.ProductPrice</td>
+                                    <td>@item.Category.CategoryName</td>
+                                    <td>@item.ProductStock</td>
+                                    <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Sil</a></td>
+                                    <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success"><i class="fas fa-edit"></i> Güncelle </a></td>
+                                    <td><a href="/Admin/ProductImage/ProductImageDetail/@item.ProductId" class="btn btn-warning">Ürün Görselleri</a></td>
+                                    <td><a href="/Admin/ProductDetail/UpdateProductDetail/@item.ProductId" class="btn btn-info">Açıklama ve Bilgi</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="CreateProduct/" class="btn btn-primary"><i class="fas fa-boxes"> </i>Yeni Ürün Girişi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
