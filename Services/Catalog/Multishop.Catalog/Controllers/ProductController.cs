@@ -49,5 +49,6 @@ namespace Multishop.Catalog.Controllers
 			await _productService.UpdateProductAsync(updateProductDto);
 			return Ok("Ürün başarıyla güncellendi");
 		}
+
 	}
 }
