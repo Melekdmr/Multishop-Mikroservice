@@ -56,5 +56,6 @@ namespace Multishop.Catalog.Controllers
 			var values = await _productService.GetResultProductWithCategoryasync();
 			return Ok(values);
 		}
+
 	}
 }
