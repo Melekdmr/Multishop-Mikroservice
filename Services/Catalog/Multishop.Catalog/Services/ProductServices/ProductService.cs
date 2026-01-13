@@ -11,6 +11,7 @@ namespace Multishop.Catalog.Services.ProductServices
 	{
 		private readonly IMongoCollection<Product> _productColllection;
 		private readonly IMapper _mapper;
+		private readonly IMongoCollection<Category> _categoryCollection;
 
 		public ProductService(IMapper mapper ,IDatabaseSettings _databaseSettings)
 		{
@@ -18,6 +19,7 @@ namespace Multishop.Catalog.Services.ProductServices
 			var database = client.GetDatabase(_databaseSettings.DatabaseName);  //veritabanı
 			_productColllection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);  //koleksiyon-tablo
 			_mapper = mapper;
+			_categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectiionName);
 		}
 
 		public async Task CreateProductAsync(CreateProductDto createProductDto)
@@ -43,7 +45,17 @@ namespace Multishop.Catalog.Services.ProductServices
 			return _mapper.Map<GetByIdProductDto>(values);
 		}
 
-		public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
+        public async Task<List<ResultProductWithCategoryDto>> GetResultProductWithCategoryasync()
+        {
+			var values = await _productColllection.Find(x => true).ToListAsync();
+			foreach(var item in values)
+			{
+			item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstOrDefaultAsync();
+			}
+			return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
+        }
+
+        public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
 		{
 			var values = _mapper.Map<Product>(updateProductDto);
 			await _productColllection.FindOneAndReplaceAsync(x => x.ProductId == updateProductDto.ProductId, values);
