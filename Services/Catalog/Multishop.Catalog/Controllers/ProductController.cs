@@ -57,5 +57,5 @@ namespace Multishop.Catalog.Controllers
 			return Ok(values);
 		}
 
-	}
+    }
 }
